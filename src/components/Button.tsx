@@ -2,7 +2,7 @@ import React from "react";
 import clsx from "clsx";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "ghost" | "danger";
+  variant?: "primary" | "secondary" | "ghost" | "danger" | "gradient";
   size?: "sm" | "md" | "lg";
   isLoading?: boolean;
   children: React.ReactNode;
@@ -14,9 +14,10 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     const variantStyles = {
       primary: "bg-primary text-white hover:bg-opacity-90 active:scale-95",
-      secondary: "bg-gray-100 text-gray-900 border border-gray-300 hover:bg-gray-50 active:scale-95",
-      ghost: "text-gray-900 hover:bg-gray-100 active:scale-95",
-      danger: "bg-error text-white hover:bg-opacity-90 active:scale-95",
+  secondary: "bg-gray-100 text-gray-900 border border-gray-300 hover:bg-gray-50 active:scale-95",
+  ghost: "text-gray-900 hover:bg-gray-100 active:scale-95",
+  danger: "bg-error text-Black  hover:bg-opacity-90 active:scale-95",
+  gradient: "bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:from-blue-600 hover:to-cyan-600 active:scale-95 shadow-lg",
     };
 
     const sizeStyles = {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { Layout, Card, CardHeader, Button, Input, TextArea, Select, Badge } from "@/components";
+import { Layout, Card, CardHeader, Button, Input, TextArea, Select, Badge, ImageUpload } from "@/components";
 import { ArrowLeft } from "lucide-react";
 import type { Platform, ContentTone, CTA } from "@/types";
 
@@ -35,6 +35,11 @@ export default function Editor() {
     "🚀 Excited to announce that our AI-powered social media management platform is now live! We've spent the last 6 months perfecting every detail, and we're thrilled to bring this to market.\n\nOur new platform helps marketing teams create better content faster, maintain creative control, and measure real impact. Built for agencies, startups, and enterprise teams alike.\n\n👉 Learn more about how we're transforming social media workflow."
   );
   const [isGenerating, setIsGenerating] = useState(false);
+  const [uploadedImage, setUploadedImage] = useState<{ file: File; preview: string } | null>(null);
+
+const handleImageSelect = (file: File, preview: string) => {
+  setUploadedImage({ file, preview });
+};
 
   const handleGenerate = async () => {
     if (!topic.trim()) {
@@ -133,10 +138,12 @@ export default function Editor() {
                     onChange={(e) => setCta(e.target.value as CTA)}
                     options={ctaOptions}
                   />
-
+		  {/* Image Upload */}
+<ImageUpload onImageSelect={handleImageSelect} />
                   {/* Generate Button */}
                   <Button
-                    className="w-full"
+		    variant="gradient"
+                    className="w-full text-lg font-bold"
                     onClick={handleGenerate}
                     isLoading={isGenerating}
                   >
@@ -149,6 +156,16 @@ export default function Editor() {
             {/* Right: Preview */}
             <div>
               <h2 className="text-lg font-bold text-gray-900 mb-4">Preview</h2>
+		{/* Image Preview */}
+{uploadedImage && (
+  <Card className="mb-6">
+    <img
+      src={uploadedImage.preview}
+      alt="Uploaded"
+      className="w-full rounded-lg max-h-64 object-cover"
+    />
+  </Card>
+)}
 
               {/* Platform Preview */}
               <Card variant="elevated" className="mb-6">

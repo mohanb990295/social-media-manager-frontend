@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { Layout, Card, CardHeader, Button, Input, TextArea, Select, Badge, ImageUpload } from "@/components";
+import { Layout, Card, CardHeader, Button, TextArea, Select, ImageUpload } from "@/components";
 import { ArrowLeft } from "lucide-react";
 import type { Platform, ContentTone, CTA } from "@/types";
 
@@ -49,7 +49,7 @@ export default function Editor() {
 
     setIsGenerating(true);
     try {
-      const response = await fetch("http://localhost:8000/enhance", {
+      const response = await fetch("https://ai-content-enhancer-git-main-apex-tricon.vercel.app/enhance", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ context: topic, platform: selectedPlatform }),

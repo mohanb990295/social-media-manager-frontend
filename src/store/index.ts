@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { User, Post } from "@/types";
+import type { User } from "@/types";
 
 interface AuthStore {
   user: User | null;
@@ -11,7 +11,7 @@ interface AuthStore {
 export const useAuth = create<AuthStore>((set) => ({
   user: null,
   isLoading: false,
-  login: async (email: string, password: string) => {
+  login: async (email: string, _password: string) => {
     set({ isLoading: true });
     try {
       // Mock login - replace with real API call

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Layout, Card, CardHeader, Badge, StatusBadge, Button } from "@/components";
+import { Layout, Card, CardHeader, Badge, Button } from "@/components";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { Platform } from "@/types";
 

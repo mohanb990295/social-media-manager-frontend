@@ -224,7 +224,7 @@ const handleImageSelect = (file: File, preview: string) => {
   onClick={() => alert("Post API call here")}
 >
   Post
-</Button>
+ </Button>
             </div>
           </div>
         </div>

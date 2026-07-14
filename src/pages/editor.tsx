@@ -28,7 +28,7 @@ const handleImageSelect = (file: File, preview: string) => {
 
     setIsGenerating(true);
     try {
-      const response = await fetch("https://ai-content-enhancer-git-main-apex-tricon.vercel.app/enhance", {
+      const response = await fetch("/api/enhance", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ context: topic, platform: selectedPlatform }),

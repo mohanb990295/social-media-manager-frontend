@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { Layout, Card, CardHeader, Button, TextArea, Select, Badge, ImageUpload } from "@/components";
+import { Layout, Card, CardHeader, Button, TextArea, ImageUpload } from "@/components";
 import { ArrowLeft } from "lucide-react";
 import type { Platform } from "@/types";
 

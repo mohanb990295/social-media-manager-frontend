@@ -11,3 +11,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+select {
+  color: #111827 !important;
+}
+
+select option {
+  color: #111827 !important;
+  background-color: white !important;
+}

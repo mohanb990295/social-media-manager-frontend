@@ -81,7 +81,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
                   className={clsx(
                     "flex items-center gap-3 px-4 py-2.5 rounded-lg font-medium transition-colors",
                     isActive
-                      ? "bg-primary text-white"
+                      ? "bg-primary text-gray-900"
                       : "text-gray-700 hover:bg-gray-100"
                   )}
                 >
@@ -124,17 +124,10 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
         {/* Spacer */}
         <div className="flex-1 lg:hidden" />
 
-        {/* Right Side */}
-        <div className="flex items-center gap-4">
-          {/* Notifications */}
-          <button className="relative p-2 text-gray-700 hover:bg-gray-100 rounded-lg">
-            <span className="text-lg">🔔</span>
-            <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full" />
-          </button>
-
-          {/* Profile */}
-          <button className="w-10 h-10 rounded-full bg-gray-300 hover:bg-gray-400 transition-colors" />
-        </div>
+       {/* Right Side */}
+<div className="flex items-center gap-4">
+  {/* Placeholder for future features */}
+</div>
       </div>
     </header>
   );

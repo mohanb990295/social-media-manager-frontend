@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { Layout, Card, CardHeader, Button, StatusBadge, Badge } from "@/components";
 import { BarChart3, Plus, CheckCircle, AlertCircle, TrendingUp } from "lucide-react";
 import type { Post, DashboardStats, ScheduleItem } from "@/types";
 
 export default function Dashboard() {
-  const [stats, setStats] = useState<DashboardStats>({
+  const [stats] = useState<DashboardStats>({
     pendingApproval: 8,
     publishedThisWeek: 24,
     engagementRate: 3.2,

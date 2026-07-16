@@ -246,7 +246,7 @@ export default function Analytics() {
             </div>
           )}
  
-          {/* Section 2: Key Metrics */}
+        {/* Section 2: Key Metrics *
           <div className="mb-8">
             <h2 className="text-lg font-bold text-gray-900 mb-4">Performance Metrics</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -280,7 +280,7 @@ export default function Analytics() {
                 <p className="text-xs text-green-600 mt-2">↑ 25% vs last period</p>
               </Card>
             </div>
-          </div>
+          </div>/}
  
           {/* Section 3: Additional Metrics */}
           <div className="mb-8">

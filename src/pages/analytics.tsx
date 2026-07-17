@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Layout, Card, CardHeader } from "@/components";
+import { Layout, Card, Button } from "@/components";
 import { ArrowLeft, Linkedin, Instagram, Facebook, Twitter } from "lucide-react";
 
 type TimePeriod = "week" | "month" | "quarter";
@@ -321,10 +321,15 @@ export default function Analytics() {
           {/* Section 4: Posts Table */}
           <div>
             <Card>
-              <CardHeader
-                title="Posts Analytics"
-                subtitle="Performance metrics for each post"
-              />
+  <div className="flex justify-between items-center mb-6">
+    <div>
+      <h3 className="text-lg font-bold text-gray-900">Posts Analytics</h3>
+      <p className="text-sm text-gray-600">Performance metrics for each post</p>
+    </div>
+    <Button onClick={() => alert("Generate Leads - Coming soon!")}>
+      Generate Leads
+    </Button>
+  </div>
 
               <div className="overflow-x-auto">
                 <table className="w-full">

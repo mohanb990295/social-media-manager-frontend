@@ -41,7 +41,6 @@ export default function Analytics() {
     alert("Generate Leads - Coming soon!");
   };
 
-  // Platform data with actual icons
   const platforms: PlatformMetrics[] = [
     {
       name: "LinkedIn",
@@ -93,7 +92,6 @@ export default function Analytics() {
               {platforms.map((platform) => (
                 <div key={platform.name}>
                   {platform.comingSoon ? (
-                    // Disabled card for Coming Soon platforms
                     <Card className="opacity-60 cursor-not-allowed">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
@@ -109,7 +107,6 @@ export default function Analytics() {
                       </div>
                     </Card>
                   ) : (
-                    // Clickable card for LinkedIn
                     <Card
                       className="cursor-pointer hover:shadow-md hover:border-primary transition-all"
                       onClick={platform.onClick}
@@ -214,19 +211,14 @@ export default function Analytics() {
                   <thead>
                     <tr className="border-b border-gray-200">
                       <th className="text-left py-3 px-4 font-medium text-gray-900">Post ID</th>
-                      <th className="text-center py-3 px-4 font-medium text-gray-900">
-                        Engagement
-                      </th>
                       <th className="text-center py-3 px-4 font-medium text-gray-900">Likes</th>
                       <th className="text-center py-3 px-4 font-medium text-gray-900">Comments</th>
-                      <th className="text-center py-3 px-4 font-medium text-gray-900">Shares</th>
                       <th className="text-left py-3 px-4 font-medium text-gray-900">Total Reach</th>
-                      <th className="text-left py-3 px-4 font-medium text-gray-900">Leads</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td colSpan={7} className="text-center py-8 text-gray-500">
+                      <td colSpan={4} className="text-center py-8 text-gray-500">
                         No posts data yet. Posts will appear here once connected to Unipile API.
                       </td>
                     </tr>
@@ -237,8 +229,7 @@ export default function Analytics() {
               <div className="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
                 <p className="text-sm text-blue-900">
                   💡 <strong>API Ready:</strong> This component is ready to connect to Unipile API.
-                  Replace mock data with real API calls when backend is ready. Post IDs are masked
-                  for privacy (showing only last 4 digits).
+                  Replace mock data with real API calls when backend is ready.
                 </p>
               </div>
             </Card>

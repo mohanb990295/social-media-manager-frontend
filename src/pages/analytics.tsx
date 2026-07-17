@@ -1,25 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { Layout, Card, Button } from "@/components";
 import { ArrowLeft, Linkedin, Instagram, Facebook, Twitter } from "lucide-react";
-
-type TimePeriod = "week" | "month" | "quarter";
 
 interface PlatformMetrics {
   name: string;
   icon: React.ReactNode;
   comingSoon?: boolean;
   onClick?: () => void;
-}
-
-interface PostData {
-  id: string;
-  title: string;
-  engagement?: number;
-  reach?: number;
-  likes?: number;
-  comments?: number;
-  leads?: number;
 }
 
 interface AnalyticsData {
@@ -33,16 +21,8 @@ interface AnalyticsData {
   totalLeads: number;
 }
 
-const mockPosts: PostData[] = [
-  { id: "1", title: "Post 1", reach: 120, likes: 5,comments: 2 },
-  { id: "2", title: "Post 2", reach: 200, likes: 10,comments: 100 },
-  { id: "3", title: "Post 3", reach: 150, likes: 7, comments: 50 },
-];
-
 export default function Analytics() {
-  const [timePeriod, setTimePeriod] = useState<TimePeriod>("quarter");
-  const [posts] = useState<PostData[]>(mockPosts);
-  const [analyticsData, setAnalyticsData] = useState<AnalyticsData>({
+  const [analyticsData] = useState<AnalyticsData>({
     reach: 102500,
     engagement: 8400,
     engagementRate: 8.1,
@@ -52,72 +32,13 @@ export default function Analytics() {
     totalLikes: 15300,
     totalLeads: 336,
   });
-  const [loading, setLoading] = useState(false);
-
-  // Fetch analytics from API
-  useEffect(() => {
-    fetchAnalytics();
-  }, [timePeriod]);
-
-  const fetchAnalytics = async () => {
-    setLoading(true);
-    try {
-      // TODO: Replace with actual API call
-      // const response = await fetch(`/api/analytics?period=${timePeriod}`);
-      // const data = await response.json();
-      // setAnalyticsData(data);
-
-      // Mock data for now - will be replaced with real API data
-      const mockMetrics = {
-        week: {
-          reach: 8500,
-          engagement: 650,
-          engagementRate: 7.6,
-          followers: 450,
-          totalPosts: 12,
-          totalComments: 245,
-          totalLikes: 1250,
-          totalLeads: 28,
-        },
-        month: {
-          reach: 34200,
-          engagement: 2800,
-          engagementRate: 8.2,
-          followers: 1850,
-          totalPosts: 48,
-          totalComments: 980,
-          totalLikes: 5100,
-          totalLeads: 112,
-        },
-        quarter: {
-          reach: 102500,
-          engagement: 8400,
-          engagementRate: 8.1,
-          followers: 5500,
-          totalPosts: 144,
-          totalComments: 2940,
-          totalLikes: 15300,
-          totalLeads: 336,
-        },
-      };
-
-      setAnalyticsData(mockMetrics[timePeriod]);
-
-      // TODO: Fetch posts from Unipile API
-      // const postsResponse = await fetch(`/api/posts?period=${timePeriod}`);
-      // const postsData = await postsResponse.json();
-      // setPosts(postsData);
-    } catch (error) {
-      console.error("Error fetching analytics:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const handleLinkedInClick = () => {
-    // TODO: This will handle LinkedIn-specific actions
-    // Could be: redirect to LinkedIn management page, show LinkedIn details, etc.
     alert("LinkedIn Analytics - Coming soon with Unipile integration!");
+  };
+
+  const handleGenerateLeads = () => {
+    alert("Generate Leads - Coming soon!");
   };
 
   // Platform data with actual icons
@@ -156,45 +77,9 @@ export default function Analytics() {
                 Back to Dashboard
               </button>
             </Link>
-            <div className="flex justify-between items-start">
-              <div>
-                <h1 className="text-3xl font-bold text-gray-900">Analytics</h1>
-                <p className="text-gray-600 mt-1">Track performance across all platforms</p>
-              </div>
-
-              {/* Time Period Selector */}
-              <div className="flex gap-2 bg-gray-100 p-1 rounded-lg">
-                <button
-                  onClick={() => setTimePeriod("week")}
-                  className={`px-4 py-2 rounded font-medium transition-colors ${
-                    timePeriod === "week"
-                      ? "bg-white text-gray-900 shadow-sm"
-                      : "text-gray-700 hover:text-gray-900"
-                  }`}
-                >
-                  Week
-                </button>
-                <button
-                  onClick={() => setTimePeriod("month")}
-                  className={`px-4 py-2 rounded font-medium transition-colors ${
-                    timePeriod === "month"
-                      ? "bg-white text-gray-900 shadow-sm"
-                      : "text-gray-700 hover:text-gray-900"
-                  }`}
-                >
-                  Month
-                </button>
-                <button
-                  onClick={() => setTimePeriod("quarter")}
-                  className={`px-4 py-2 rounded font-medium transition-colors ${
-                    timePeriod === "quarter"
-                      ? "bg-white text-gray-900 shadow-sm"
-                      : "text-gray-700 hover:text-gray-900"
-                  }`}
-                >
-                  Quarter
-                </button>
-              </div>
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900">Analytics</h1>
+              <p className="text-gray-600 mt-1">Track performance across all platforms</p>
             </div>
           </div>
         </div>
@@ -248,14 +133,7 @@ export default function Analytics() {
             </div>
           </div>
 
-          {/* Loading State */}
-          {loading && (
-            <div className="text-center py-8">
-              <p className="text-gray-600">Loading analytics data...</p>
-            </div>
-          )}
-
-        {/* Section 2: Key Metrics *
+          {/* Section 2: Key Metrics */}
           <div className="mb-8">
             <h2 className="text-lg font-bold text-gray-900 mb-4">Performance Metrics</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -289,7 +167,7 @@ export default function Analytics() {
                 <p className="text-xs text-green-600 mt-2">↑ 25% vs last period</p>
               </Card>
             </div>
-          </div>/}
+          </div>
 
           {/* Section 3: Additional Metrics */}
           <div className="mb-8">
@@ -318,46 +196,40 @@ export default function Analytics() {
             </div>
           </div>
 
-          {/* Section 4: Posts Table */}
+          {/* Section 4: Posts Analytics Table */}
           <div>
             <Card>
-  <div className="flex justify-between items-center mb-6">
-    <div>
-      <h3 className="text-lg font-bold text-gray-900">Posts Analytics</h3>
-      <p className="text-sm text-gray-600">Performance metrics for each post</p>
-    </div>
-    <Button onClick={() => alert("Generate Leads - Coming soon!")}>
-      Generate Leads
-    </Button>
-  </div>
+              <div className="mb-6">
+                <div className="flex justify-between items-center">
+                  <div>
+                    <h3 className="text-lg font-bold text-gray-900">Posts Analytics</h3>
+                    <p className="text-sm text-gray-600">Performance metrics for each post</p>
+                  </div>
+                  <Button onClick={handleGenerateLeads}>Generate Leads</Button>
+                </div>
+              </div>
 
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
                     <tr className="border-b border-gray-200">
                       <th className="text-left py-3 px-4 font-medium text-gray-900">Post ID</th>
-                      <th className="text-left py-3 px-4 font-medium text-gray-900">Reach</th>
-                      <th className="text-left py-3 px-4 font-medium text-gray-900">Likes</th>
-                      <th className="text-left py-3 px-4 font-medium text-gray-900">Comments</th>
+                      <th className="text-center py-3 px-4 font-medium text-gray-900">
+                        Engagement
+                      </th>
+                      <th className="text-center py-3 px-4 font-medium text-gray-900">Likes</th>
+                      <th className="text-center py-3 px-4 font-medium text-gray-900">Comments</th>
+                      <th className="text-center py-3 px-4 font-medium text-gray-900">Shares</th>
+                      <th className="text-left py-3 px-4 font-medium text-gray-900">Total Reach</th>
+                      <th className="text-left py-3 px-4 font-medium text-gray-900">Leads</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {posts.length === 0 ? (
-                      <tr>
-                        <td colSpan={4} className="text-center py-8 text-gray-500">
-                          No posts data yet. Posts will appear here once connected to Unipile API.
-                        </td>
-                      </tr>
-                    ) : (
-                      posts.map((post) => (
-                        <tr key={post.id} className="border-b border-gray-200 hover:bg-gray-50">
-                          <td className="py-3 px-4 text-sm text-gray-900">{post.id}</td>
-                          <td className="py-3 px-4 text-sm text-gray-900">{post.reach}</td>
-                          <td className="py-3 px-4 text-sm text-gray-900">{post.likes}</td>
-                          <td className="py-3 px-4 text-sm text-gray-900">{post.comments}</td>
-                        </tr>
-                      ))
-                    )}
+                    <tr>
+                      <td colSpan={7} className="text-center py-8 text-gray-500">
+                        No posts data yet. Posts will appear here once connected to Unipile API.
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
               </div>

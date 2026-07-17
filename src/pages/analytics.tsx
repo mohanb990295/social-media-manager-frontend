@@ -22,6 +22,7 @@ interface AnalyticsData {
 }
 
 export default function Analytics() {
+  const [showLeadsModal, setShowLeadsModal] = useState(false);
   const [analyticsData] = useState<AnalyticsData>({
     reach: 102500,
     engagement: 8400,
@@ -38,7 +39,7 @@ export default function Analytics() {
   };
 
   const handleGenerateLeads = () => {
-    alert("Generate Leads - Coming soon!");
+    setShowLeadsModal(true);
   };
 
   const platforms: PlatformMetrics[] = [
@@ -131,7 +132,7 @@ export default function Analytics() {
           </div>
 
           {/* Section 2: Key Metrics */}
-          <div className="mb-8">
+          {/* <div className="mb-8">
             <h2 className="text-lg font-bold text-gray-900 mb-4">Performance Metrics</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <Card>
@@ -164,7 +165,7 @@ export default function Analytics() {
                 <p className="text-xs text-green-600 mt-2">↑ 25% vs last period</p>
               </Card>
             </div>
-          </div>
+          </div> */}
 
           {/* Section 3: Additional Metrics */}
           <div className="mb-8">
@@ -217,11 +218,23 @@ export default function Analytics() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td colSpan={4} className="text-center py-8 text-gray-500">
-                        No posts data yet. Posts will appear here once connected to Unipile API.
-                      </td>
-                    </tr>
+                    {[
+                      { id: "POST-001", likes: 245, comments: 38, reach: "12.4K" },
+                      { id: "POST-002", likes: 189, comments: 27, reach: "9.8K" },
+                      { id: "POST-003", likes: 312, comments: 54, reach: "18.2K" },
+                      { id: "POST-004", likes: 156, comments: 19, reach: "7.6K" },
+                      { id: "POST-005", likes: 421, comments: 63, reach: "22.1K" },
+                      { id: "POST-006", likes: 98, comments: 12, reach: "5.3K" },
+                      { id: "POST-007", likes: 276, comments: 41, reach: "14.7K" },
+                      { id: "POST-008", likes: 134, comments: 22, reach: "6.9K" },
+                    ].map((post) => (
+                      <tr key={post.id} className="border-b border-gray-100 hover:bg-gray-50">
+                        <td className="py-3 px-4 text-gray-900 font-medium">{post.id}</td>
+                        <td className="py-3 px-4 text-center text-gray-700">{post.likes}</td>
+                        <td className="py-3 px-4 text-center text-gray-700">{post.comments}</td>
+                        <td className="py-3 px-4 text-gray-700">{post.reach}</td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
@@ -236,6 +249,36 @@ export default function Analytics() {
           </div>
         </div>
       </div>
+      {/* Generate Leads Modal */}
+      {showLeadsModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+            onClick={() => setShowLeadsModal(false)}
+          />
+          {/* Modal */}
+          <div className="relative bg-white rounded-xl shadow-2xl w-[90vw] max-w-5xl max-h-[85vh] overflow-y-auto p-8">
+            {/* Close button */}
+            <button
+              onClick={() => setShowLeadsModal(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl font-bold"
+            >
+              &times;
+            </button>
+
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Generate Leads</h2>
+            <p className="text-gray-600 mb-6">Analyze post comments to identify potential leads</p>
+
+            {/* Modal content placeholder */}
+            <div className="space-y-6">
+              <div className="p-6 bg-gray-50 rounded-lg border border-gray-200 text-center">
+                <p className="text-gray-500">Lead generation content goes here</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </Layout>
   );
 }

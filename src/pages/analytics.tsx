@@ -194,7 +194,7 @@ export default function Analytics() {
             </div>
           </div>
 
-          {/* Section 4: Posts Analytics Table */}
+          {/* Section 4: Posts Analytics Tables */}
           <div>
             <Card>
               <div className="mb-6">

@@ -4,7 +4,7 @@ import axios from "axios";
 import { Layout, Card, Button } from "@/components";
 import { ArrowLeft, Linkedin, Instagram, Facebook, Twitter } from "lucide-react";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://ai-content-enhancer.vercel.app/docs";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://ai-content-enhancer.vercel.app";
 
 interface PlatformMetrics {
   name: string;
@@ -362,5 +362,3 @@ export default function Analytics() {
     </Layout>
   );
 }
-
- 

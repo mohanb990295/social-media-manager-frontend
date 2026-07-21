@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://ai-content-enhancer.vercel.app/docs"; // Backend
+const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://ai-content-enhancer.vercel.app"; // Backend
 
 export const apiClient = axios.create({
   baseURL: apiUrl,

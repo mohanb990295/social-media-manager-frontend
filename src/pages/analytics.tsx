@@ -4,7 +4,7 @@ import axios from "axios";
 import { Layout, Card, Button } from "@/components";
 import { ArrowLeft, Linkedin, Instagram, Facebook, Twitter } from "lucide-react";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
 interface PlatformMetrics {
   name: string;

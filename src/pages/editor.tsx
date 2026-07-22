@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { Layout, Card, CardHeader, Button, TextArea, ImageUpload } from "@/components";
+import { Layout, Card, CardHeader, Button, TextArea } from "@/components";
 import { ArrowLeft, Linkedin, Instagram, Facebook, Twitter } from "lucide-react";
 import type { Platform } from "@/types";
 
@@ -16,7 +16,7 @@ export default function Editor() {
   const [topic, setTopic] = useState("");
   const [generatedContent, setGeneratedContent] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
-  const [uploadedImage, setUploadedImage] = useState<{ file: File; preview: string } | null>(null);
+  // const [uploadedImage, setUploadedImage] = useState<{ file: File; preview: string } | null>(null);
   const [error, setError] = useState("");
 
   const platforms: PlatformOption[] = [
@@ -81,9 +81,9 @@ export default function Editor() {
     }
   };
 
-  const handleImageSelect = (file: File, preview: string) => {
-    setUploadedImage({ file, preview });
-  };
+  // const handleImageSelect = (file: File, preview: string) => {
+  //   setUploadedImage({ file, preview });
+  // };
 
   const characterCount = generatedContent.length;
   const maxCharacters = selectedPlatform === "x" ? 280 : 3000;

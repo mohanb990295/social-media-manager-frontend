@@ -106,7 +106,6 @@ export default function Editor() {
                 <p className="text-gray-600 mt-1">AI-assisted content creation</p>
               </div>
               <div className="flex gap-3">
-                <Button variant="secondary">Save Draft</Button>
                 <Button onClick={() => alert("Post API call here")}>Post</Button>
               </div>
             </div>
@@ -172,8 +171,8 @@ export default function Editor() {
                   {/* Error Message */}
                   {error && <p className="text-red-600 text-sm">{error}</p>}
 
-                  {/* Image Upload */}
-                  <ImageUpload onImageSelect={handleImageSelect} />
+                  {/* Image Upload 
+                  <ImageUpload onImageSelect={handleImageSelect} />*/}
 
                   {/* Generate Button */}
                   <Button

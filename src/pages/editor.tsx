@@ -191,7 +191,7 @@ export default function Editor() {
             <div>
               <h2 className="text-lg font-bold text-gray-900 mb-4">Preview</h2>
 
-              {/* Image Preview */}
+              {/* Image Preview
               {uploadedImage && (
                 <Card className="mb-6">
                   <img
@@ -200,7 +200,7 @@ export default function Editor() {
                     className="w-full rounded-lg max-h-64 object-cover"
                   />
                 </Card>
-              )}
+              )} */}
 
               {/* Platform Preview */}
               <Card variant="elevated" className="mb-6">

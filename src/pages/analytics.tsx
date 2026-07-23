@@ -544,23 +544,23 @@ export default function Analytics() {
 
                 {draftChannel === "email" ? (
                   <button
-                    onClick={() => alert("Send Email integration is planned for a future update!")}
+                    onClick={() => alert("Send Email integration is coming soon!")}
                     disabled={draftLoading}
-                    title="Send Email directly (Future Plan)"
+                    title="Send Email directly (Coming Soon)"
                     className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-blue-200 bg-blue-50 text-blue-700 text-xs font-semibold hover:bg-blue-100 disabled:opacity-50 transition-all shadow-sm"
                   >
                     <Send className="w-3.5 h-3.5 text-blue-600" />
-                    Send Email (Future)
+                    Send Email (Coming Soon)
                   </button>
                 ) : (
                   <button
-                    onClick={() => alert("Send LinkedIn DM integration is planned for a future update!")}
+                    onClick={() => alert("Send LinkedIn DM integration is coming soon!")}
                     disabled={draftLoading}
-                    title="Send LinkedIn DM directly (Future Plan)"
+                    title="Send LinkedIn DM directly (Coming Soon)"
                     className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-indigo-200 bg-indigo-50 text-indigo-700 text-xs font-semibold hover:bg-indigo-100 disabled:opacity-50 transition-all shadow-sm"
                   >
                     <Send className="w-3.5 h-3.5 text-indigo-600" />
-                    Send DM (Future)
+                    Send DM (Coming Soon)
                   </button>
                 )}
               </div>

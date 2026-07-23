@@ -44,6 +44,16 @@ interface AnalyticsSummary {
   totalLeads: number;
 }
 
+const getScoreBadgeClass = (score: number) => {
+  if (score >= 60) {
+    return "bg-green-100 text-green-700 border border-green-200";
+  } else if (score >= 40) {
+    return "bg-orange-100 text-orange-700 border border-orange-200";
+  } else {
+    return "bg-red-100 text-red-700 border border-red-200";
+  }
+};
+
 export default function Analytics() {
   const [showLeadsModal, setShowLeadsModal] = useState(false);
 
@@ -182,9 +192,12 @@ export default function Analytics() {
       const res = await axios.get(`${API_URL}/get-leads`);
       const data = res.data;
       const leadsArray = Array.isArray(data) ? data : data.leads ?? data.data ?? [];
+      const sortedLeads = [...leadsArray].sort(
+        (a, b) => (b.total_score ?? 0) - (a.total_score ?? 0)
+      );
 
-      setLeads(leadsArray);
-      setSummary((prev) => ({ ...prev, totalLeads: leadsArray.length }));
+      setLeads(sortedLeads);
+      setSummary((prev) => ({ ...prev, totalLeads: sortedLeads.length }));
     } catch (err) {
       console.error("Failed to fetch leads:", err);
       setLeadsError("Couldn't fetch leads. Check that the backend is running.");
@@ -320,7 +333,7 @@ export default function Analytics() {
                     <h3 className="text-lg font-bold text-gray-900">Posts Analytics</h3>
                     <p className="text-sm text-gray-600">Performance metrics for each post</p>
                   </div>
-                  <Button onClick={handleGenerateLeads}>Generate Leads</Button>
+                  <Button onClick={handleGenerateLeads}>Generated Leads</Button>
                 </div>
               </div>
 
@@ -376,7 +389,7 @@ export default function Analytics() {
               &times;
             </button>
 
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">Generate Leads</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Generated Leads</h2>
             <p className="text-gray-600 mb-6">Analyze post comments to identify potential leads</p>
 
             <div className="space-y-4">
@@ -404,7 +417,7 @@ export default function Analytics() {
                         <p className="text-xs text-gray-600 mt-2">{lead.reasoning}</p>
                       </div>
                       <div className="flex flex-col items-end gap-1 flex-shrink-0">
-                        <span className="text-xs px-2 py-1 rounded bg-green-100 text-green-700 font-medium whitespace-nowrap">
+                        <span className={`text-xs px-2 py-1 rounded font-medium whitespace-nowrap ${getScoreBadgeClass(lead.total_score || 0)}`}>
                           {lead.total_score}/100
                         </span>
                         <span className="text-xs px-2 py-1 rounded bg-blue-100 text-blue-700 font-medium whitespace-nowrap">

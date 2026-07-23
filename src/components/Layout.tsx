@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import clsx from "clsx";
-import { BarChart3, Home, FileText, Calendar, Settings, Menu, X } from "lucide-react";
+import { BarChart3, Home, FileText, Settings, Menu, X } from "lucide-react";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -39,7 +39,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   const navItems = [
     { href: "/", label: "Dashboard", icon: Home },
     { href: "/editor", label: "Create Post", icon: FileText },
-    { href: "/calendar", label: "Calendar", icon: Calendar },
+    // { href: "/calendar", label: "Calendar", icon: Calendar },
     { href: "/analytics", label: "Analytics", icon: BarChart3 },
     { href: "/settings", label: "Settings", icon: Settings },
   ];

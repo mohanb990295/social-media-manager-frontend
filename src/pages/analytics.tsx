@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import axios from "axios";
 import { Layout, Card, Button } from "@/components";
-import { ArrowLeft, Linkedin, Instagram, Facebook, Twitter, Sparkles, RefreshCw, Mail, MessageSquare, Copy, Check } from "lucide-react";
+import { ArrowLeft, Linkedin, Instagram, Facebook, Twitter, Sparkles, RefreshCw, Mail, MessageSquare, Copy, Check, Send } from "lucide-react";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://ai-content-enhancer.vercel.app";
 
@@ -532,14 +532,38 @@ export default function Analytics() {
 
             {/* Action Footer */}
             <div className="flex justify-between items-center mt-5 pt-3 border-t border-gray-100">
-              <button
-                onClick={handleRegenerateDraft}
-                disabled={draftLoading}
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-gray-300 bg-white text-gray-700 text-xs font-semibold hover:bg-gray-50 disabled:opacity-50 transition-all shadow-sm"
-              >
-                <RefreshCw className={`w-3.5 h-3.5 ${draftLoading ? "animate-spin" : ""}`} />
-                🔄 Regenerate Response
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={handleRegenerateDraft}
+                  disabled={draftLoading}
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-gray-300 bg-white text-gray-700 text-xs font-semibold hover:bg-gray-50 disabled:opacity-50 transition-all shadow-sm"
+                >
+                  <RefreshCw className={`w-3.5 h-3.5 ${draftLoading ? "animate-spin" : ""}`} />
+                  🔄 Regenerate Response
+                </button>
+
+                {draftChannel === "email" ? (
+                  <button
+                    onClick={() => alert("Send Email integration is planned for a future update!")}
+                    disabled={draftLoading}
+                    title="Send Email directly (Future Plan)"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-blue-200 bg-blue-50 text-blue-700 text-xs font-semibold hover:bg-blue-100 disabled:opacity-50 transition-all shadow-sm"
+                  >
+                    <Send className="w-3.5 h-3.5 text-blue-600" />
+                    Send Email (Future)
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => alert("Send LinkedIn DM integration is planned for a future update!")}
+                    disabled={draftLoading}
+                    title="Send LinkedIn DM directly (Future Plan)"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-indigo-200 bg-indigo-50 text-indigo-700 text-xs font-semibold hover:bg-indigo-100 disabled:opacity-50 transition-all shadow-sm"
+                  >
+                    <Send className="w-3.5 h-3.5 text-indigo-600" />
+                    Send DM (Future)
+                  </button>
+                )}
+              </div>
 
               <div className="flex gap-2">
                 <button

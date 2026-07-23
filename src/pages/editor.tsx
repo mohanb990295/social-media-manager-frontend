@@ -11,6 +11,8 @@ interface PlatformOption {
   comingSoon?: boolean;
 }
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+
 export default function Editor() {
   const [selectedPlatform, setSelectedPlatform] = useState<Platform>("linkedin");
   const [topic, setTopic] = useState("");
@@ -56,7 +58,7 @@ export default function Editor() {
 
     try {
       const response = await fetch(
-        "https://ai-content-enhancer-git-main-apex-tricon.vercel.app/enhance",
+        `${API_URL}/enhance`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
